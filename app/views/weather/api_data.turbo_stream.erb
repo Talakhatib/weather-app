@@ -1,0 +1,11 @@
+<%= turbo_stream.update "weather_data" do %>
+<div>
+  <p>country: <%= @data["location"]["country"] %></p>
+  <p>name: <%= @data["location"]["name"] %></p>
+  <p>temperature: <%= @data["current"]["temperature"] %></p>
+  <p><%= image_tag(@data["current"]["weather_icons"].first)%></p>
+  <p>weather description: <%= @data["current"]["weather_descriptions"].first %></p>
+  <p>wind speed: <%= @data["current"]["wind_speed"] %></p>
+  <p>wind degree: <%= @data["current"]["wind_degree"] %></p> 
+</div>
+<% end %>

@@ -1,0 +1,8 @@
+<%= form_tag api_data_path,:method =>"post" do  %>
+   <%= text_field_tag 'city_name',nil,placeholder: "Enter a city name" %>
+   <%= submit_tag("Search",:name => nil,class:"btn btn-primary") %>
+<% end %>
+
+
+<%= turbo_frame_tag "weather_data" do %>
+<% end %>
