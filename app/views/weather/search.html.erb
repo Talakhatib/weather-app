@@ -1,8 +1,17 @@
+
 <%= form_tag api_data_path,:method =>"post" do  %>
-   <%= text_field_tag 'city_name',nil,placeholder: "Enter a city name" %>
-   <%= submit_tag("Search",:name => nil,class:"btn btn-primary") %>
+   <%= text_field_tag 'city_name',nil,placeholder: "Enter a city name" ,class:"search_bar"%>
+   <%= submit_tag("Search",:name => nil,class:"btn btn-info search_btn") %>
 <% end %>
-
-
-<%= turbo_frame_tag "weather_data" do %>
-<% end %>
+<br>
+<p><%= button_to "The last 10 resaerches of country weather",list_path,class:"btn btn-info" %></p>
+<div class="row">
+   <div class="col-25">
+     <%= turbo_frame_tag "list" do %>
+     <% end %>
+   </div>
+  <div class="col-75">
+   <%= turbo_frame_tag "weather_data" do %>
+   <% end %>
+  </div>
+</div>

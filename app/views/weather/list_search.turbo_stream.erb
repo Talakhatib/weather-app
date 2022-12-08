@@ -1,0 +1,9 @@
+<%= turbo_stream.update "list" do %>
+<div class="search_list">
+   <ul>
+   <% @searchs.each do |s| %>
+     <li><%= s.country %>/<%= s.name %></li>
+   <% end %>
+   </ul>
+</div>
+<% end %>

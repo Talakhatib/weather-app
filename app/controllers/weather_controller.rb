@@ -2,10 +2,11 @@ require 'net/http'
 class WeatherController < ApplicationController
 
     def search 
-
     end
 
     def api_data 
+        city_name = params[:city_name]
+        if !city_name.blank?
         uri = URI('http://api.weatherstack.com/current?access_key=be23d19041bdfe894b1589ea3b4736c4&query='+params[:city_name])
         res = Net::HTTP.get_response(uri) 
         @data = JSON.parse(res.body)
@@ -19,7 +20,19 @@ class WeatherController < ApplicationController
         city.save
         respond_to do |format|
             format.turbo_stream
-            format.html { redirect_to search_path }
+            format.html { redirect_to root_path }
+        end
+       else
+        flash[:danger]="You need to enter a city name"
+        redirect_to root_path
+       end
+     end
+
+     def list_search 
+        @searchs = CityWeather.last(10)
+        respond_to do |format|
+            format.turbo_stream
+            format.html { redirect_to root_path }
         end
      end
 end

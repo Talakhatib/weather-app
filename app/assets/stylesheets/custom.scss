@@ -1,2 +1,88 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+ 
+ .alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+ 
+ .alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+ 
+ .alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+.search_bar {
+   float: left;
+   padding: 12px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   width: 75%;
+   margin-top: 6px;
+   margin-left: 100px;
+   align-content:  center;
+}
+.search_btn{
+   margin-top: 6px;
+   padding: 12px;
+}
+
+body {
+   background-image: url("https://mobileinternist.com/wp-content/uploads/2021/03/weather-ios-app-featured.png");
+   padding-top:30px;
+ }
+
+ .weather-description{
+
+   margin: 25px 100px 75px 100px;
+   background:rgba(0,0,0,0.3);
+   padding-top:30px;
+   padding-bottom:30px;
+   text-align: center;
+   color: white;
+   font-weight: 600;
+   font-size: 22px;
+   
+   }
+
+.search_list{
+   margin: 25px 0px 75px 0px;
+   background:rgba(0,0,0,0.3);
+   padding-top:30px;
+   padding-bottom:30px;
+   color: white;
+}
+.col-25 {
+   float: left;
+   width: 25%;
+   margin-top: 6px;
+ }
+ 
+ .col-75 {
+   float: left;
+   width: 75%;
+   margin-top: 6px;
+ }
+
+//  .row:after {
+//    content: "";
+//    display: table;
+//    clear: both;
+//  }

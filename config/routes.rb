@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "weather#search"
   post "/api_data",to: "weather#api_data"
+  post "/list",to: "weather#list_search"
 end
