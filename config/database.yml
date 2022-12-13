@@ -28,3 +28,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
+  database: weather_production
+  username: weather
+  password: <%= ENV["ODIN_FACEBOOK_DATABASE_PASSWORD"] %>
