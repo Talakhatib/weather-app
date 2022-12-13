@@ -12,16 +12,5 @@ RSpec.describe "Weathers", type: :request do
     end
   end
 
-  context "search" do
-    it "returns a success response" do
-      get root_path
-    end
-  end
-
-  context "list of last 10 researches" do
-    it "returns a success response" do
-      post list_path
-    end
-  end
 
 end

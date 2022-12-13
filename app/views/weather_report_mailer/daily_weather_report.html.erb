@@ -1,0 +1,16 @@
+<body>
+  <h1>Your Daily Weather Report For  <%= @country %>/<%= @name %> ! </h1>
+  
+  <p>Temperature : <%= @temperature %></p>
+  <br>
+  <p>Weather Description : <%= @weather_description %></p>
+  <br>
+  <p>Wind  Speed: <%= @wind_speed %></p>
+  <br>
+  <p>Wind Degree : <%= @wind_degree %></p>
+  <br>
+  <hr>
+  <p>
+   To unsubscribe click on this link: <%= link_to "Unsubscribe", unsubscribe_url(user: @user) %>
+  </p>
+</body>

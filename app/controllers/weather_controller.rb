@@ -2,6 +2,12 @@ require 'net/http'
 class WeatherController < ApplicationController
 
     def search 
+        search = Geocoder.search("94.187.1.183")
+        city = search.first.city
+        uri = URI('http://api.weatherstack.com/current?access_key=be23d19041bdfe894b1589ea3b4736c4&query='+city)
+        res = Net::HTTP.get_response(uri) 
+        @data = JSON.parse(res.body)
+        @searches = CityWeather.arrange_desc.first(10)
     end
 
     def api_data 
@@ -18,6 +24,8 @@ class WeatherController < ApplicationController
         wind_degree = @data["current"]["wind_degree"]
         city = CityWeather.new(country: country,name: name ,temperature: temperature,weather_description: weather_description,wind_speed: wind_speed,wind_degree: wind_degree)
         city.save
+        searches = CityWeather.arrange_desc.first(11)
+        @searches = searches[1..10]# exclude the last element
         respond_to do |format|
             format.turbo_stream
             format.html { redirect_to root_path }
@@ -28,11 +36,4 @@ class WeatherController < ApplicationController
        end
      end
 
-     def list_search 
-        @searchs = CityWeather.last(10)
-        respond_to do |format|
-            format.turbo_stream
-            format.html { redirect_to root_path }
-        end
-     end
 end

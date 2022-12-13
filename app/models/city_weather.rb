@@ -1,5 +1,6 @@
 class CityWeather < ApplicationRecord
-
+    
+    scope :arrange_desc,-> {order(created_at: :desc)}
     validates :country, presence: true
     validates :name, presence: true
     validates :temperature, presence: true

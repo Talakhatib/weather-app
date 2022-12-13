@@ -58,11 +58,11 @@ group :development do
 
   gem 'rspec-rails'
  
-  # Capybara, the library that allows us to interact with the browser using Ruby
-  gem 'capybara'
+  # # Capybara, the library that allows us to interact with the browser using Ruby
+  # gem 'capybara'
  
-  # This gem helps Capybara interact with the web browser.
-  gem 'webdrivers'
+  # # This gem helps Capybara interact with the web browser.
+  # gem 'webdrivers'
 end
 
 group :test do
@@ -76,3 +76,8 @@ gem 'webpacker'
 gem 'bootstrap-sass'
 
 gem 'geocoder'
+
+gem "sidekiq"
+gem 'sidekiq-cron'
+
+gem 'pg'

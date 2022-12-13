@@ -1,17 +1,49 @@
-
+<div class="row">
+  
+   <div class="col-25">
+     <%= turbo_frame_tag "list" do %>
+     <div class="search_list">
+        <ul>
+         <% @searches.each do |s| %>
+           <li>
+           Country:<%= s.country %><br>
+           Name: <%= s.name %><br>
+           Temperature: <%= s.temperature %><br>
+           Weather Description: <%= s.weather_description %><br>
+           Wind Speed: <%= s.wind_speed %><br>
+           Wind Degree: <%= s.wind_degree %><br>
+           </li>
+        <% end %>
+       </ul>
+     </div>
+     <% end %>
+   </div>
+<div class="col-75">
 <%= form_tag api_data_path,:method =>"post" do  %>
    <%= text_field_tag 'city_name',nil,placeholder: "Enter a city name" ,class:"search_bar"%>
    <%= submit_tag("Search",:name => nil,class:"btn btn-info search_btn") %>
 <% end %>
 <br>
-<p><%= button_to "The last 10 resaerches of country weather",list_path,class:"btn btn-info" %></p>
-<div class="row">
-   <div class="col-25">
-     <%= turbo_frame_tag "list" do %>
-     <% end %>
-   </div>
-  <div class="col-75">
+
+
    <%= turbo_frame_tag "weather_data" do %>
-   <% end %>
+   <div class="weather-description">
+   <h1> <%= @data["location"]["country"] %></h1>
+   <h4><%= @data["location"]["localtime"] %></h4>
+   <h2> <%= @data["location"]["name"] %></h2>
+   <h3><%= image_tag(@data["current"]["weather_icons"].first)%> <%= @data["current"]["temperature"] %> C</h3>
+   <h4> <%= @data["current"]["weather_descriptions"].first %></h4>
+   <h4>Wind speed  <%= @data["current"]["wind_speed"] %> km/h</h4>
+   <h4>Wind degree  <%= @data["current"]["wind_degree"] %></h4> 
+  </div>
+   <% end %> 
+   <div  class="row">
+     <div class="col-100">
+     <%= form_with url: users_path,:method => "post" ,data: {turbo: false} do |f| %>
+       <p><%= f.text_field :email,placeholder:"Enter your email example@gmail.com" ,class:"email_field" %></p>
+        <%= f.submit "Subscribe",class:"button button5" %>
+      <% end %>
+     </div>
+   </div>
   </div>
 </div>

@@ -1,0 +1,4 @@
+:schedule :
+ weather_report_mailer_job:
+  cron: " 2 * * * *"
+  class: "WeatherReportMailerJob"
