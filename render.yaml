@@ -1,7 +1,7 @@
 databases:
-  - name: postgres
+  - name: weather
     databaseName: weather
-    user: postgres
+    user: weather
 
 services:
   - type: web
