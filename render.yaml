@@ -6,7 +6,8 @@ services:
     name: weather
     env: ruby
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: bundle exec rails s
+    plan: free
     envVars:
       - key: DATABASE_URL
         fromDatabase:
