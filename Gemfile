@@ -81,3 +81,6 @@ gem "sidekiq"
 gem 'sidekiq-cron'
 
 gem 'pg'
+gem 'whenever', require: false
+
+gem 'mail'

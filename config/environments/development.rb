@@ -38,20 +38,21 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' } 
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000' } || { :host => 'https://weather-ruby-app-g868.onrender.com' }
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.delivery_method = :smtp
-   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "https://weather-ruby-app-g868.onrender.com",
-    :user_name =>  'talakhatib4@gmail.com',
-    :password =>  'wfoxugsqcelatxxx',
-    :authentication =>   'plain',
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'localhost:3000',
+    user_name:            'talakhatib4@gmail.com',
+    password:             'wfoxugsqcelatxxx',
+    authentication:       'plain',
+    enable_starttls_auto: true,
     open_timeout:         5,
-    read_timeout:         5 
-    }
+    read_timeout:         5 }
 
   config.action_mailer.perform_caching = false
 
