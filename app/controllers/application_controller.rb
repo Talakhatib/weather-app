@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     def remote_ip
         if request.remote_ip == '127.0.0.1'
           # Hard coded remote address
-          "94.187.0.20"
+          "91.232.101.17"
         else
           request.remote_ip
         end

@@ -6,7 +6,14 @@ class WeatherController < ApplicationController
         city = Geocoder.search(ip).first.city
         uri = URI('https://api.weatherbit.io/v2.0/current?key=36aa05d409f143bebfd437e6ecc5cbc8&city='+city)
         res = Net::HTTP.get_response(uri) 
-        @data = JSON.parse(res.body)
+        data = JSON.parse(res.body)
+        @country = data["data"].first["country_code"]
+        @localtime = data["data"].first["datetime"]
+        @name = data["data"].first["city_name"]
+        @temperature = data["data"].first["temp"]
+        @weather_description = data["data"].first["weather"]["description"]
+        @wind_speed = data["data"].first["wind_spd"]
+        @wind_degree = data["data"].first["wind_dir"]
         @searches = CityWeather.arrange_desc.first(10)
     end
 
@@ -15,14 +22,14 @@ class WeatherController < ApplicationController
         if !city_name.blank?
         uri = URI('https://api.weatherbit.io/v2.0/current?key=36aa05d409f143bebfd437e6ecc5cbc8&city='+params[:city_name])
         res = Net::HTTP.get_response(uri) 
-        @data = JSON.parse(res.body)
-        country = @data["data"]["country_code"]
-        name = @data["data"]["city_name"]
-        temperature = @data["data"]["temp"]
-        weather_description = @data["data"]["weather"]["description"]
-        wind_speed = @data["data"]["wind_spd"]
-        wind_degree = @data["data"]["wind_dir"]
-        city = CityWeather.new(country: country,name: name ,temperature: temperature,weather_description: weather_description,wind_speed: wind_speed,wind_degree: wind_degree)
+        data = JSON.parse(res.body)
+        @country = data["data"].first["country_code"]
+        @name = data["data"].first["city_name"]
+        @temperature = data["data"].first["temp"]
+        @weather_description = data["data"].first["weather"]["description"]
+        @wind_speed = data["data"].first["wind_spd"]
+        @wind_degree = data["data"].first["wind_dir"]
+        city = CityWeather.new(country: @country,name: @name ,temperature: @temperature,weather_description: @weather_description,wind_speed: @wind_speed,wind_degree: @wind_degree)
         city.save
         searches = CityWeather.arrange_desc.first(11)
         @searches = searches[1..10]# exclude the last element
