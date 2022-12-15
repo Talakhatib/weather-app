@@ -2,8 +2,8 @@ require 'net/http'
 class WeatherController < ApplicationController
 
     def search 
-        search = Geocoder.search("94.187.1.183")
-        city = search.first.city
+        ip = remote_ip()
+        city = Geocoder.search(ip).first.city
         uri = URI('http://api.weatherstack.com/current?access_key=be23d19041bdfe894b1589ea3b4736c4&query='+city)
         res = Net::HTTP.get_response(uri) 
         @data = JSON.parse(res.body)
