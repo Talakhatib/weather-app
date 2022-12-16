@@ -47,7 +47,7 @@ class WeatherController < ApplicationController
              format.html { redirect_to root_path }
             end
           else 
-            flash[:danger] = "You need to enter a correct city name .Please try again !!"
+            flash[:danger] = "You need to enter a uncorrect city name .Please try again !!"
             redirect_to root_path
           end
        else
