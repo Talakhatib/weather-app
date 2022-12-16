@@ -12,7 +12,7 @@
 
 <%= turbo_stream.update "list" do %>
 <div class="search_list">
-   <ul>
+   <ul>   
          <% @searches.each do |s| %>
            <li>
            Country:<%= s.country %><br>
@@ -22,7 +22,7 @@
            Wind Speed: <%= s.wind_speed %><br>
            Wind Degree: <%= s.wind_degree %><br>
            </li>
-        <% end %>
+         <% end %>
        </ul>
 </div>
 <% end %>
