@@ -5,6 +5,7 @@ class WeatherController < ApplicationController
         @searches = CityWeather.arrange_desc.first(10)
         ip = remote_ip()
         result = Geocoder.search(ip)
+        #flash[:danger] = "safdsad" if !result.first.city.present?
         if result.first.city.present?
           city = result.first.city
           uri = URI('https://api.weatherbit.io/v2.0/current?key=36aa05d409f143bebfd437e6ecc5cbc8&city='+city)
@@ -28,6 +29,10 @@ class WeatherController < ApplicationController
 
     def api_data 
         city_name = params[:city_name]
+        # if city_name.blank? 
+        #   flash[:danger]="You need to enter a city name"
+        #   redirect_to root_path
+        # end
         if !city_name.blank?
            uri = URI('https://api.weatherbit.io/v2.0/current?key=36aa05d409f143bebfd437e6ecc5cbc8&city='+params[:city_name])
            res = Net::HTTP.get_response(uri) 

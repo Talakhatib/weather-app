@@ -4,8 +4,9 @@ class UsersController < ApplicationController
       ip = remote_ip()
       city = Geocoder.search(ip).first.city
       @user = User.new(email: params[:email], city: city)
-      if @user.save 
-        WeatherReportMailer.daily_weather_report(@user).deliver_now
+      if @user.save
+        # WeatherReportMailer.daily_weather_report(@user).deliver_now
+        WeatherReportMailerJob.perform_now
         flash[:success] = "Your subscription is successfully done !! Check your email . "
         redirect_to root_path
       else 
