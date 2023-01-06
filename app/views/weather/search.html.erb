@@ -6,12 +6,12 @@
         <ul>
          <% @searches.each do |s| %>
            <li>
-           Country:<%= s.country %><br>
-           Name: <%= s.name %><br>
-           Temperature: <%= s.temperature %><br>
-           Weather Description: <%= s.weather_description %><br>
-           Wind Speed: <%= s.wind_speed %><br>
-           Wind Degree: <%= s.wind_degree %><br>
+           Country:<%= s["country"] %><br>
+           Name: <%= s["name"] %><br>
+           Temperature: <%= s["temperature"] %><br>
+           Weather Description: <%= s["weather_description"] %><br>
+           Wind Speed: <%= s["wind_speed"] %><br>
+           Wind Degree: <%= s["wind_degree"] %><br>
            </li>
         <% end %>
        </ul>

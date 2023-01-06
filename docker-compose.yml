@@ -15,20 +15,3 @@ services:
     depends_on:
       - db
   
-  
-  redis:
-    image: redis
-    command: redis-server
-    ports:
-      - "6379:6379"
-
-  sidekiq:
-    depends_on:
-      - 'db'
-      - 'redis'
-    build: .
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    volumes:
-      - .:/weather_app
-    environment:
-      - REDIS_URL_SIDEKIQ=redis://redis:6379/0
